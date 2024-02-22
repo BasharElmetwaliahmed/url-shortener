@@ -1,8 +1,11 @@
 const router = require('express').Router();
-
+const {
+  createUrl,
+  getHome,
+  getLongUrl,
+} = require("../controllers/UrlController");
 /* GET home page. */
-router.get('/', function (req, res, next) {
-    res.render('index', { title: 'Express' });
-});
+router.route("/").get(getHome).post(createUrl);
+router.get("/:alias", getLongUrl);
 
 module.exports = router;
